@@ -21,7 +21,7 @@ export default class Navbar extends React.Component {
                 <div className="nav-center">
                     <div className="nav-header">
                         <Link to='/'>
-                            <img src={logo} alt="beach resort" />
+                            <img src={logo} alt="tara beach resort" />
                         </Link>
                         <button
                             type="button"
