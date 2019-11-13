@@ -6,6 +6,7 @@ import Services from '../components/Services';
 import FeaturedRooms from '../components/FeaturedRooms';
 
 
+
 export default function Home () {
     return (
         <>
