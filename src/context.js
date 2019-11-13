@@ -57,5 +57,17 @@ getRoom = slug => {
 
 const RoomConsumer = RoomContext.Consumer;
 
+// create higher-order-component to wrap the consumer around any component
+// for resusability reasons:
+
+export function withRoomConsumer(Component) {
+    return function ConsumerWrapper(props) {
+        return <RoomConsumer>
+            { value => <Component { ...props } context={ value } /> }
+        </RoomConsumer>
+    }
+}
+
+
 
 export { RoomProvider, RoomConsumer, RoomContext };
