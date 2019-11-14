@@ -39,13 +39,13 @@ export default class SingleRoom extends React.Component {
         
         // array destructuring:
         // use rest operator '...' instead of [ mainImg, img1, img2 ] ==> rest of the images in the array, apart from mainImg
-        const [ mainImg, ...defaultImg ] = images;        
+        const [ mainImg, ...defaultImages ] = images;        
 
         return  (
             <>
         
 {/* use mainImg here */}
-                <StyledHero img={ mainImg || this.state.defaultImg }>
+                <StyledHero img={ mainImg || this.state.defaultBcg }>
                     <Banner title={ `${ name } room` }>
                         <Link to='/rooms' className='btn-primary'>
                             back to rooms
@@ -57,7 +57,7 @@ export default class SingleRoom extends React.Component {
                     <div className="single-room-images">
 
 {/* replace images with defaultImg to not repeat the mainImg */}
-                        { defaultImg.map((item, index) => {
+                        { defaultImages.map((item, index) => {
                             return <img key={ index } src={ item } alt={ name } />
                         })}
                     </div>
