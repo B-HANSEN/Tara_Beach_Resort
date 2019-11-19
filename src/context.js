@@ -81,15 +81,22 @@ filterRooms = () => {
     price = parseInt(price);
 
 // filter by type:
+// show only rooms as received from type selection:
     if(type !== 'all') {
         tempRooms = tempRooms.filter(room => room.type === type)
     }
 
 // filter by capacity:
+// show only rooms that fulfil the capacity criterion
     if(capacity !== 1) {
         tempRooms = tempRooms.filter(room => room.capacity >= capacity)
     }
 
+// filter by price
+    tempRooms = tempRooms.filter(room => room.price <= price);
+
+
+// change state    
     this.setState({ sortedRooms: tempRooms })
 };
 
