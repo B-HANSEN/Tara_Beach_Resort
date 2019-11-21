@@ -96,10 +96,10 @@ const RoomsFilter = ({ rooms }) => {
           </div>
           <div className="single-extra">
             <input
-              type="checkbox" name="pets"
+              type="checkbox" name="pets" id="pets"
               checked={pets} onChange={handleChange}
             />
-            <label htmlFor="breakfast">pets</label>
+            <label htmlFor="pets">pets</label>
           </div>
         </div>
         {/* end of extras type */}
