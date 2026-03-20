@@ -11,8 +11,8 @@ export default function RoomContainer() {
     }
     return (
         <>
-            <RoomFilter rooms={ rooms } />
-            <RoomList rooms={ sortedRooms } />
+            <RoomFilter rooms={rooms} />
+            <RoomList rooms={sortedRooms} />
         </>
     );
 }

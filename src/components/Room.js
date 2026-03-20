@@ -2,29 +2,26 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import defaultImg from '../images/room-1.jpeg';
 
-
 export default function Room({ room }) {
     const { name, slug, images, price } = room;
-    
+
     return (
         <article className="room">
             <div className="img-container">
-{/* in case, no image is available or error in code,
+                {/* in case, no image is available or error in code,
 avoid alt-text to be shown by adding a defaultImg */}
-                    <img src={ images[0] || defaultImg } alt="single room" />
-                    <div className="price-top">
-                        <h6>${ price }</h6>
-                        <p>per night</p>
-                    </div>
+                <img src={images[0] || defaultImg} alt="single room" />
+                <div className="price-top">
+                    <h6>${price}</h6>
+                    <p>per night</p>
+                </div>
 
-{/* use object literals to use variable" */}
-                    <Link
-                        to={ `/rooms/${ slug }` }
-                        className="btn-primary room-link"
-                        >Features
-                    </Link>
+                {/* use object literals to use variable" */}
+                <Link to={`/rooms/${slug}`} className="btn-primary room-link">
+                    Features
+                </Link>
             </div>
-            <p className="room-info">{ name }</p>
+            <p className="room-info">{name}</p>
         </article>
-    )
+    );
 }

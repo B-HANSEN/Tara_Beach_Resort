@@ -5,16 +5,14 @@ import { Link } from 'react-router-dom';
 import Services from '../components/Services';
 import FeaturedRooms from '../components/FeaturedRooms';
 
-
-
-export default function Home () {
+export default function Home() {
     return (
         <>
-{/* <> and </> are substituting React.Fragment
+            {/* <> and </> are substituting React.Fragment
 which is required as root component */}
             <Hero>
                 <Banner title="luxurious rooms" subtitle="deluxe rooms starting at $299">
-                    <Link to='/rooms' className="btn-primary">
+                    <Link to="/rooms" className="btn-primary">
                         our rooms
                     </Link>
                 </Banner>
@@ -22,5 +20,5 @@ which is required as root component */}
             <Services />
             <FeaturedRooms />
         </>
-    )
-};
+    );
+}
