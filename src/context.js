@@ -80,5 +80,4 @@ export function RoomProvider({ children }) {
 
 export default RoomProvider;
 
-const RoomConsumer = RoomContext.Consumer;
-export { RoomConsumer, RoomContext };
+export { RoomContext };

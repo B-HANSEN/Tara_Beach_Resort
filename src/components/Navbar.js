@@ -13,11 +13,7 @@ export default function Navbar() {
                     <Link to="/">
                         <img src={logo} alt="tara beach resort" />
                     </Link>
-                    <button
-                        type="button"
-                        className="nav-btn"
-                        onClick={() => setIsOpen(!isOpen)}
-                    >
+                    <button type="button" className="nav-btn" onClick={() => setIsOpen(!isOpen)}>
                         <FaAlignRight className="nav-icon" />
                     </button>
                 </div>
