@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import defaultImg from '../images/room-1.jpeg';
-import PropTypes from 'prop-types';
 
 
 export default function Room({ room }) {
@@ -29,12 +28,3 @@ avoid alt-text to be shown by adding a defaultImg */}
         </article>
     )
 }
-
-Room.propTypes = {
-    room: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        slug: PropTypes.string.isRequired,
-        images: PropTypes.arrayOf(PropTypes.string).isRequired,
-        price: PropTypes.number.isRequired
-    })
-};

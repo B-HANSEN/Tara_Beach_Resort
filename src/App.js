@@ -6,7 +6,7 @@ import Rooms from './pages/Rooms';
 import SingleRoom from './pages/SingleRoom';
 import Error from './pages/Error';
 
-import { Route, Switch } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 
 
@@ -14,14 +14,13 @@ function App() {
   return (
     <>
       <Navbar />
-      <Switch>
-        <Route exact path='/' component={ Home } />
-        <Route exact path='/rooms' component={ Rooms } />
-        <Route exact path='/rooms/:slug' component={ SingleRoom } />
-        <Route component={ Error } />
-      </Switch>
-  </>
-   
+      <Routes>
+        <Route path='/' element={ <Home /> } />
+        <Route path='/rooms' element={ <Rooms /> } />
+        <Route path='/rooms/:slug' element={ <SingleRoom /> } />
+        <Route path='*' element={ <Error /> } />
+      </Routes>
+    </>
   );
 }
 
