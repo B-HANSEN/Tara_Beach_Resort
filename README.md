@@ -39,10 +39,6 @@ npm start
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-> **Note:** If you’re using Node 17+, you may need to set the legacy OpenSSL option:
-> ```bash
-> export NODE_OPTIONS=--openssl-legacy-provider
-> ```
 
 ## Routes
 
