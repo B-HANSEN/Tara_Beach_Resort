@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import logo from '../images/logo.svg';
 import { FaAlignRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';

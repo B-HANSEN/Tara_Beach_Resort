@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import defaultBcg from '../images/room-2.jpeg';
 import Banner from '../components/Banner';
 import { Link, useParams } from 'react-router-dom';
