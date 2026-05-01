@@ -8,6 +8,7 @@ The app is fully responsive and optimized for mobile, tablet, and desktop screen
 
 - **React 19** with Context API for global state
 - **React Router v7** for client-side routing
+- **Vite** as dev server and build tool
 - **Contentful** as headless CMS (room data and images)
 - **Styled Components v6** for dynamic styling
 - **React Icons** for UI icons
@@ -25,8 +26,8 @@ npm install
 Create a `.env` file in the project root:
 
 ```
-REACT_APP_API_SPACE=your_contentful_space_id
-REACT_APP_ACCESS_TOKEN=your_contentful_access_token
+VITE_API_SPACE=your_contentful_space_id
+VITE_ACCESS_TOKEN=your_contentful_access_token
 ```
 
 Find these in your Contentful dashboard under **Settings > API keys**.
@@ -37,7 +38,7 @@ Find these in your Contentful dashboard under **Settings > API keys**.
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 
 ## Routes
@@ -66,4 +67,4 @@ The `/rooms` page supports filtering by:
 |---|---|
 | `npm start` | Start development server |
 | `npm run build` | Build for production |
-| `npm test` | Run tests |
+| `npm run preview` | Preview production build locally |
