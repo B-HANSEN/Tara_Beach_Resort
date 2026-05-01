@@ -1,4 +1,3 @@
-
 export default function Banner({ children, title, subtitle }) {
     return (
         <div className="banner">
