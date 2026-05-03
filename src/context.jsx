@@ -1,12 +1,10 @@
-import { createContext, useState, useEffect, useCallback } from 'react';
+import { createContext, useState, useEffect, useCallback, useMemo } from 'react';
 import Client from './Contentful';
 
 const RoomContext = createContext();
 
 const initialState = {
     rooms: [],
-    sortedRooms: [],
-    featuredRooms: [],
     loading: true,
     type: 'all',
     capacity: 1,
@@ -34,45 +32,42 @@ export function RoomProvider({ children }) {
         Client.getEntries({ content_type: 'beachResortRoom', order: 'sys.createdAt' })
             .then(response => {
                 const rooms = formatData(response.items);
-                const featuredRooms = rooms.filter(room => room.featured === true);
                 const maxPrice = Math.max(...rooms.map(item => item.price));
                 const maxSize = Math.max(...rooms.map(item => item.size));
-                setState(s => ({ ...s, rooms, featuredRooms, sortedRooms: rooms, loading: false, price: maxPrice, maxPrice, maxSize }));
+                setState(s => ({ ...s, rooms, loading: false, price: maxPrice, maxPrice, maxSize }));
             })
             .catch(error => console.error(error));
     }, []);
 
-    const getRoom = useCallback(slug => {
-        return state.rooms.find(room => room.slug === slug);
-    }, [state.rooms]);
+    const featuredRooms = useMemo(
+        () => state.rooms.filter(room => room.featured),
+        [state.rooms]
+    );
 
-    const filterRooms = useCallback((newState) => {
-        let { rooms, type, capacity, price, minSize, maxSize, breakfast, pets } = { ...state, ...newState };
-        capacity = parseInt(capacity);
-        price = parseInt(price);
-
-        let tempRooms = [...rooms];
-        if (type !== 'all') tempRooms = tempRooms.filter(room => room.type === type);
-        if (capacity !== 1) tempRooms = tempRooms.filter(room => room.capacity >= capacity);
-        tempRooms = tempRooms.filter(room => room.price <= price);
-        tempRooms = tempRooms.filter(room => room.size >= minSize && room.size <= maxSize);
-        if (breakfast) tempRooms = tempRooms.filter(room => room.breakfast === true);
-        if (pets) tempRooms = tempRooms.filter(room => room.pets === true);
-
-        return tempRooms;
+    const sortedRooms = useMemo(() => {
+        const { rooms, type, capacity, price, minSize, maxSize, breakfast, pets } = state;
+        let temp = [...rooms];
+        if (type !== 'all') temp = temp.filter(room => room.type === type);
+        if (capacity !== 1) temp = temp.filter(room => room.capacity >= parseInt(capacity));
+        temp = temp.filter(room => room.price <= parseInt(price));
+        temp = temp.filter(room => room.size >= minSize && room.size <= maxSize);
+        if (breakfast) temp = temp.filter(room => room.breakfast === true);
+        if (pets) temp = temp.filter(room => room.pets === true);
+        return temp;
     }, [state]);
+
+    const getRoom = useCallback(
+        slug => state.rooms.find(room => room.slug === slug),
+        [state.rooms]
+    );
 
     const handleChange = useCallback(event => {
         const { name, type, checked, value } = event.target;
-        const newValue = type === 'checkbox' ? checked : value;
-        setState(s => {
-            const updated = { ...s, [name]: newValue };
-            return { ...updated, sortedRooms: filterRooms({ [name]: newValue }) };
-        });
-    }, [filterRooms]);
+        setState(s => ({ ...s, [name]: type === 'checkbox' ? checked : value }));
+    }, []);
 
     return (
-        <RoomContext.Provider value={{ ...state, getRoom, handleChange }}>
+        <RoomContext.Provider value={{ ...state, featuredRooms, sortedRooms, getRoom, handleChange }}>
             {children}
         </RoomContext.Provider>
     );
