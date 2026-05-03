@@ -6,6 +6,7 @@ const RoomContext = createContext();
 const initialState = {
     rooms: [],
     loading: true,
+    error: false,
     type: 'all',
     capacity: 1,
     price: 0,
@@ -36,7 +37,7 @@ export function RoomProvider({ children }) {
                 const maxSize = Math.max(...rooms.map(item => item.size));
                 setState(s => ({ ...s, rooms, loading: false, price: maxPrice, maxPrice, maxSize }));
             })
-            .catch(error => console.error(error));
+            .catch(() => setState(s => ({ ...s, loading: false, error: true })));
     }, []);
 
     const featuredRooms = useMemo(

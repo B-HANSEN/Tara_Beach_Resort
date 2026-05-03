@@ -5,10 +5,9 @@ import { RoomContext } from '../context';
 import Loading from './Loading';
 
 export default function RoomContainer() {
-    const { loading, sortedRooms, rooms } = useContext(RoomContext);
-    if (loading) {
-        return <Loading />;
-    }
+    const { loading, error, sortedRooms, rooms } = useContext(RoomContext);
+    if (loading) return <Loading />;
+    if (error) return <p>Failed to load rooms. Please try again later.</p>;
     return (
         <>
             <RoomFilter rooms={rooms} />

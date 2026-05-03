@@ -5,7 +5,7 @@ import Room from './Room';
 import Title from './Title';
 
 export default function FeaturedRooms() {
-    const { loading, featuredRooms } = useContext(RoomContext);
+    const { loading, error, featuredRooms } = useContext(RoomContext);
 
     return (
         <section className="featured-rooms">
@@ -13,6 +13,8 @@ export default function FeaturedRooms() {
             <div className="featured-rooms-center">
                 {loading ? (
                     <Loading />
+                ) : error ? (
+                    <p>Failed to load rooms. Please try again later.</p>
                 ) : (
                     featuredRooms.map((room) => <Room key={room.id} room={room} />)
                 )}
