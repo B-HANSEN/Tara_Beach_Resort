@@ -36,8 +36,8 @@ export default function SingleRoom() {
 
             <section className="single-room">
                 <div className="single-room-images">
-                    {defaultImages.map((item) => (
-                        <img key={item} src={item} alt={name} />
+                    {defaultImages.map((item, index) => (
+                        <img key={index} src={item} alt={name} />
                     ))}
                 </div>
 
@@ -63,8 +63,8 @@ export default function SingleRoom() {
             <section className="room-extras">
                 <h6>extras</h6>
                 <ul className="extras">
-                    {extras.map((item) => (
-                        <li key={item}>- {item}</li>
+                    {extras.map((item, index) => (
+                        <li key={index}>- {item}</li>
                     ))}
                 </ul>
             </section>
