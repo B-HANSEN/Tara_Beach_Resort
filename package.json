@@ -9,7 +9,7 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.0.0",
     "react-router-dom": "^7.0.0",
-    "styled-components": "^6.0.0"
+    "styled-components": "^6.4.1"
   },
   "scripts": {
     "start": "vite",
